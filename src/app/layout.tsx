@@ -1,6 +1,10 @@
+import ThemeToggle from "@/components/theme/ThemeToggle";
+import { Toaster } from "@/components/ui/sonner";
+import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +20,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body
+        className={cn(
+          "bg-background font-sans antialiased overflow-hidden",
+          inter.className
+        )}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="absolute bottom-8 right-8 z-50">
+            <ThemeToggle />
+          </div>
+          {children}
+          <Toaster />
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
