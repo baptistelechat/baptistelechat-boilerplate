@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 
-import { program } from "commander";
-import chalk from "chalk";
-import ora from "ora";
-import figlet from "figlet";
 import boxen from "boxen";
-import fs from "fs-extra";
-import path from "path";
+import chalk from "chalk";
 import { execSync } from "child_process";
+import { program } from "commander";
+import figlet from "figlet";
+import fs from "fs-extra";
+import ora from "ora";
+import path from "path";
+
+const GITHUB_REPO =
+  "https://github.com/baptistelechat/baptistelechat-boilerplate.git";
 
 function displayBanner() {
   const bannerText = figlet.textSync("Baptiste LECHAT Boilerplate CLI", {
@@ -31,9 +34,16 @@ function displayBanner() {
 
 program
   .name("my-boilerplate-cli")
-  .description("Create a new project using my-boilerplate")
+  .description("Create a new project using baptistelechat-boilerplate")
   .option("-n, --name <name>", "Project name")
+  .option("-p, --path <path>", "Project path")
+  .option("-h, --help", "Display help information")
   .parse(process.argv);
+
+if (program.opts().help) {
+  program.outputHelp();
+  process.exit(0);
+}
 
 if (!program.opts().name) {
   console.error(chalk.red("Please provide a project name."));
@@ -41,7 +51,8 @@ if (!program.opts().name) {
 }
 
 const projectName = program.opts().name || "";
-const projectDirectory = path.join(process.cwd(), projectName);
+const projectPath = program.opts().path || process.cwd();
+const projectDirectory = path.join(projectPath, projectName);
 
 if (fs.existsSync(projectDirectory)) {
   console.error(chalk.red(`A directory named ${projectName} already exists.`));
@@ -52,10 +63,7 @@ displayBanner();
 
 const cloneSpinner = ora("Cloning repository...").start();
 try {
-  execSync(
-    `git clone https://github.com/yourusername/my-boilerplate.git ${projectName}`,
-    { stdio: "inherit" }
-  );
+  execSync(`git clone ${GITHUB_REPO} ${projectName}`, { stdio: "inherit" });
   cloneSpinner.succeed("Cloned repository successfully.");
 } catch (error) {
   cloneSpinner.fail("Failed to clone repository.");
