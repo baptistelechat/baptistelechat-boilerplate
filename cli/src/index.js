@@ -8,6 +8,7 @@ import fs from "fs-extra";
 import path from "path";
 import cloneRepository from "./utils/cloneRepository.js";
 import installDependencies from "./utils/installDependencies.js";
+import removeCliDirectory from "./utils/removeCLIdirectory.js";
 import removeGitHistory from "./utils/removeGitHistory.js";
 import removePnpmLockFile from "./utils/removePnpmLockFile.js";
 
@@ -76,7 +77,9 @@ const main = async () => {
 
   await displayBanner();
   await cloneRepository(projectName);
-  await removeGitHistory(projectName);
+  process.chdir(projectName);
+  await removeGitHistory();
+  await removeCliDirectory();
   if (installer !== "pnpm") {
     await removePnpmLockFile();
   }

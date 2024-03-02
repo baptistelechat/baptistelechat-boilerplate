@@ -5,7 +5,6 @@ import ora from "ora";
 const removeGitHistory = async (projectName) => {
   const gitRemoveSpinner = ora("Removing Git history...").start();
   try {
-    process.chdir(projectName);
     await fs.remove(".git");
     gitRemoveSpinner.succeed("Removed Git history successfully.");
   } catch (error) {
