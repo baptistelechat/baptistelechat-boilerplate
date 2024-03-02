@@ -1,18 +1,26 @@
 {
   "name": "@baptistelechat/boilerplate",
   "version": "1.0.0",
-  "description": "A boilerplate for easily bootstrap a new project using NextJS",
-  "bin": {
-    "baptistelechat-boilerplate": "./src/index.js"
+  "description": "A CLI for use baptistelechat-boilerplate for easily bootstrap a new project using NextJS.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baptistelechat/baptistelechat-boilerplate.git"
   },
-  "main": "index.js",
+  "keywords": [
+    "boilerplate",
+    "cli",
+    "project",
+    "generator"
+  ],
+  "author": "Baptiste LECHAT <[email](mailto:baptistelechat@outlook.fr)>",
+  "license": "MIT",
+  "bin": {
+    "@baptistelechat/boilerplate": "src/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node src/index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "type": "module",
   "dependencies": {
     "@types/figlet": "^1.5.8",

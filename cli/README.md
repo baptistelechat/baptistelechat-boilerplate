@@ -1,36 +1,49 @@
-<h1 align="center">Baptiste LECHAT Boilerplate 🚀</h1>
+<h1 align="center">Baptiste LECHAT Boilerplate CLI 🚀</h1>
 
-A boilerplate for easily bootstrap a new project using NextJS.
+A CLI for use baptistelechat-boilerplate for easily bootstrap a new project using NextJS.
 
 ## ✨ Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+These instructions will guide you on how to install and use the Baptiste LECHAT Boilerplate CLI to create a new project.
 
 ### 🚩 Prerequisites
 
 You have to install node on your machine : https://nodejs.org/en/download/
 
-### 💻 Installing
+### 💻 Installing the CLI
 
-A step by step that tell you how to get a development env running.
-
-Step 1 → clone the project by using the commands below :
+To install the Baptiste LECHAT Boilerplate CLI, run the following command:
 
 ```bash
-git clone https://github.com/baptistelechat/baptistelechat-boilerplate.git
+npm install -g @baptistelechat/boilerplate
 ```
 
-Step 2 → install the packages :
+### 🛠️ Using the CLI
+
+To create a new project using the Baptiste LECHAT Boilerplate CLI, follow these steps:
+
+Step 1 → After installing the CLI, run this command with the project name :
 
 ```bash
-npm run install
-# or
-yarn install
-# or
-pnpm install
+@baptistelechat/boilerplate -n my-new-project
 ```
 
-Step 3 → start your local server :
+You can also use npx or yarn dlx or pnpm dlx to run the CLI without installing it globally:
+```bash
+npx @baptistelechat/boilerplate -i yarn -n my-new-project
+# or
+yarn dlx @baptistelechat/boilerplate --installer npm -n my-new-project
+# or
+pnpm dlx @baptistelechat/boilerplate -i pnpm -n my-new-project
+```
+
+Step 2 → Navigate to the newly created project directory :
+
+```bash
+cd my-new-project
+```
+
+Step 3 → Start your local server :
 
 ```bash
 npm run dev
@@ -40,63 +53,50 @@ yarn dev
 pnpm dev
 ```
 
-Step 4 → open a browser and go to localhost :
+Step 4 → Open a browser and go to localhost :
 
 ```bash
 localhost:3000
 ```
 
-## 🧱 Build project
+### 📚 Commands
+The Baptiste LECHAT Boilerplate CLI provides the following commands:
 
-Step 1 → build the project :
+**💡 Remind you can also use npx, yarn dlx, or pnpm dlx to run the CLI without installing it globally**
 
-```bash
-npm run build
-# or
-yarn build
-# or
-pnpm build
-```
-
-Step 2 → start your server :
+## Project Name
+Specify the name of your new project using the -n or --name flag:
 
 ```bash
-npm run start
+@baptistelechat/boilerplate -n my-new-project
 # or
-yarn start
-# or
-pnpm start
+@baptistelechat/boilerplate --name my-new-project
 ```
 
-Step 3 → open a browser and go to localhost :
+## Installer
+Choose a package installer for your project. The available options are npm, yarn, and pnpm. By default, the CLI uses pnpm as the package installer:
 
 ```bash
-localhost:3000
+@baptistelechat/boilerplate -i yarn -n my-new-project
+# or
+@baptistelechat/boilerplate --installer npm -n my-new-project
 ```
-
-## ✔ Lint project
-
-Lint project **without fix**
+Note that if you don't specify an installer, the CLI will use pnpm as the default package installer:
 
 ```bash
-npm run lint
-# or
-yarn lint
-# or
-pnpm lint
+@baptistelechat/boilerplate -n my-new-project
 ```
 
-Lint project **with fix**
+## Help
+Display help information for the CLI:
 
 ```bash
-npm run lint:fix
+@baptistelechat/boilerplate -h
 # or
-yarn lint:fix
-# or
-pnpm lint:fix
+@baptistelechat/boilerplate --help
 ```
 
-## 🏗 Built With
+## 🏗 Boilerplate built With
 
 - NextJS → https://nextjs.org/
 - TypeScript → https://fr.reactjs.org/

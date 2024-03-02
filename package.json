@@ -1,7 +1,19 @@
 {
   "name": "baptistelechat-boilerplate",
   "version": "1.0.0",
-  "description": "A boilerplate for easily bootstrap a new project using NextJS",
+  "description": "A boilerplate for easily bootstrap a new project using NextJS.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baptistelechat/baptistelechat-boilerplate.git"
+  },
+  "keywords": [
+    "boilerplate",
+    "cli",
+    "project",
+    "generator"
+  ],
+  "author": "Baptiste LECHAT <[email](mailto:baptistelechat@outlook.fr)>",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
