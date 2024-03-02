@@ -2,18 +2,17 @@
 
 import boxen from "boxen";
 import chalk from "chalk";
-import { execSync } from "child_process";
 import { program } from "commander";
 import figlet from "figlet";
 import fs from "fs-extra";
-import ora from "ora";
 import path from "path";
+import cloneRepository from "./utils/cloneRepository.js";
+import installDependencies from "./utils/installDependencies.js";
+import removeGitHistory from "./utils/removeGitHistory.js";
+import removePnpmLockFile from "./utils/removePnpmLockFile.js";
 
-const GITHUB_REPO =
-  "https://github.com/baptistelechat/baptistelechat-boilerplate.git";
-
-function displayBanner() {
-  const bannerText = figlet.textSync("Baptiste LECHAT Boilerplate CLI", {
+const displayBanner = () => {
+  const bannerText = figlet.textSync("Baptiste LECHAT Boilerplate", {
     font: "Standard",
     horizontalLayout: "default",
     verticalLayout: "default",
@@ -30,70 +29,72 @@ function displayBanner() {
   });
 
   console.log(bannerBox);
-}
+};
 
 program
   .name("my-boilerplate-cli")
   .description("Create a new project using baptistelechat-boilerplate")
   .option("-n, --name <name>", "Project name")
-  .option("-p, --path <path>", "Project path")
+  .option(
+    "-i, --installer <installer>",
+    "Choose package installer (npm, pnpm, yarn)",
+    "pnpm"
+  )
   .option("-h, --help", "Display help information")
   .parse(process.argv);
 
-if (program.opts().help) {
-  program.outputHelp();
-  process.exit(0);
-}
+const main = async () => {
+  if (program.opts().help) {
+    program.outputHelp();
+    process.exit(0);
+  }
 
-if (!program.opts().name) {
-  console.error(chalk.red("Please provide a project name."));
-  process.exit(1);
-}
+  if (!program.opts().name) {
+    console.error(chalk.red("Please provide a project name."));
+    process.exit(1);
+  }
 
-const projectName = program.opts().name || "";
-const projectPath = program.opts().path || process.cwd();
-const projectDirectory = path.join(projectPath, projectName);
+  const projectName = program.opts().name || "";
+  const projectDirectory = path.join(process.cwd(), projectName);
+  const installer = program.opts().installer;
 
-if (fs.existsSync(projectDirectory)) {
-  console.error(chalk.red(`A directory named ${projectName} already exists.`));
-  process.exit(1);
-}
+  if (installer !== "pnpm" && installer !== "npm" && installer !== "yarn") {
+    console.error(
+      chalk.red("Please provide a valid package manager : NPM, PNPM or Yarn.")
+    );
+    process.exit(1);
+  }
 
-displayBanner();
+  const directoryAlreadyExists = fs.existsSync(projectDirectory);
 
-const cloneSpinner = ora("Cloning repository...").start();
-try {
-  execSync(`git clone ${GITHUB_REPO} ${projectName}`, { stdio: "inherit" });
-  cloneSpinner.succeed("Cloned repository successfully.");
-} catch (error) {
-  cloneSpinner.fail("Failed to clone repository.");
-  console.error(chalk.red(error.message));
-  process.exit(1);
-}
+  if (directoryAlreadyExists) {
+    console.error(
+      chalk.red(`A directory named ${projectName} already exists.`)
+    );
+    process.exit(1);
+  }
 
-const gitRemoveSpinner = ora("Removing Git history...").start();
-try {
-  execSync(`cd ${projectName} && rm -rf .git`, { stdio: "inherit" });
-  gitRemoveSpinner.succeed("Removed Git history successfully.");
-} catch (error) {
-  gitRemoveSpinner.fail("Failed to remove Git history.");
-  console.error(chalk.red(error.message));
-  process.exit(1);
-}
+  await displayBanner();
+  await cloneRepository(projectName);
+  await removeGitHistory(projectName);
+  if (installer !== "pnpm") {
+    await removePnpmLockFile();
+  }
+  await installDependencies(installer);
 
-const installSpinner = ora("Installing dependencies...").start();
-try {
-  execSync(`cd ${projectName} && pnpm install`, { stdio: "inherit" });
-  installSpinner.succeed("Installed dependencies successfully.");
-} catch (error) {
-  installSpinner.fail("Failed to install dependencies.");
-  console.error(chalk.red(error.message));
-  process.exit(1);
-}
+  const command =
+    installer === "npm"
+      ? `  npm run dev`
+      : installer === "pnpm"
+      ? `  pnpm dev`
+      : `  yarn run dev`;
 
-console.log(
-  chalk.green(`Successfully created a new project in ${projectDirectory}.`)
-);
-console.log(chalk.cyan("To get started:"));
-console.log(chalk.cyan(`  cd ${projectName}`));
-console.log(chalk.cyan("  pnpm dev"));
+  console.log(
+    chalk.green(`Successfully created a new project in ${projectDirectory}.`)
+  );
+  console.log(chalk.cyan("To get started:"));
+  console.log(chalk.cyan(`  cd ${projectName}`));
+  console.log(chalk.cyan(command));
+};
+
+main();
