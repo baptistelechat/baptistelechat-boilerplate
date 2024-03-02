@@ -6,6 +6,9 @@ A CLI for use baptistelechat-boilerplate for easily bootstrap a new project usin
 
 These instructions will guide you on how to install and use the Baptiste LECHAT Boilerplate CLI to create a new project.
 
+![create-new-project](./screenshot/create-new-project.png)
+
+
 ### 🚩 Prerequisites
 
 You have to install node on your machine : https://nodejs.org/en/download/
@@ -30,11 +33,11 @@ Step 1 → After installing the CLI, run this command with the project name :
 
 You can also use npx or yarn dlx or pnpm dlx to run the CLI without installing it globally:
 ```bash
-npx @baptistelechat/boilerplate -i yarn -n my-new-project
+npx @baptistelechat/boilerplate -n my-new-project
 # or
-yarn dlx @baptistelechat/boilerplate --installer npm -n my-new-project
+yarn dlx @baptistelechat/boilerplate -n my-new-project
 # or
-pnpm dlx @baptistelechat/boilerplate -i pnpm -n my-new-project
+pnpm dlx @baptistelechat/boilerplate -n my-new-project
 ```
 
 Step 2 → Navigate to the newly created project directory :
@@ -95,6 +98,7 @@ Display help information for the CLI:
 # or
 @baptistelechat/boilerplate --help
 ```
+![help](./screenshot/help.png)
 
 ## 🏗 Boilerplate built With
 

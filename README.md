@@ -6,6 +6,9 @@ A boilerplate for easily bootstrap a new project using NextJS.
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
+![baptistelechat-boilerplate](./screenshot/baptistelechat-boilerplate.png)
+
+
 ### 🚩 Prerequisites
 
 You have to install node on your machine : https://nodejs.org/en/download/
