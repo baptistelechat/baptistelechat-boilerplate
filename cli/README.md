@@ -6,7 +6,7 @@ A CLI for use baptistelechat-boilerplate for easily bootstrap a new project usin
 
 These instructions will guide you on how to install and use the Baptiste LECHAT Boilerplate CLI to create a new project.
 
-![create-new-project](./screenshot/create-new-project.png)
+![create new project](https://github.com/baptistelechat/baptistelechat-boilerplate/blob/main/cli/screenshot/create-new-project.png?raw=true)
 
 
 ### 🚩 Prerequisites
@@ -98,7 +98,7 @@ Display help information for the CLI:
 # or
 @baptistelechat/boilerplate --help
 ```
-![help](./screenshot/help.png)
+![help](https://github.com/baptistelechat/baptistelechat-boilerplate/blob/main/cli/screenshot/help.png?raw=true)
 
 ## 🏗 Technical Stack
 

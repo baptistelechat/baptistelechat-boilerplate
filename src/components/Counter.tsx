@@ -23,7 +23,7 @@ const Counter = () => {
         variant="outline"
         size="icon"
         className={`${
-          counter > 0 ? "text-slate-900" : "bg-zinc-100 cursor-not-allowed text-zinc-400"
+          counter > 0 ? "" : "cursor-not-allowed text-zinc-500"
         }`}
         onClick={handleRemove}
       >
@@ -43,7 +43,7 @@ const Counter = () => {
         variant="outline"
         size="icon"
         className={`${
-          counter > 0 ? "text-slate-900" : "bg-zinc-100 cursor-not-allowed text-zinc-400"
+          counter > 0 ? "" : "cursor-not-allowed text-zinc-500"
         }`}
         onClick={resetCounter}
       >

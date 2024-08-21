@@ -11,6 +11,7 @@ import installDependencies from "./utils/installDependencies.js";
 import removeCliDirectory from "./utils/removeCLIdirectory.js";
 import removeGitHistory from "./utils/removeGitHistory.js";
 import removePnpmLockFile from "./utils/removePnpmLockFile.js";
+import removeScreenshotDirectory from "./utils/removeScreenshotDirectory.js";
 
 const displayBanner = () => {
   const bannerText = figlet.textSync("Baptiste LECHAT Boilerplate", {
@@ -80,6 +81,7 @@ const main = async () => {
   process.chdir(projectName);
   await removeGitHistory();
   await removeCliDirectory();
+  await removeScreenshotDirectory();
   if (installer !== "pnpm") {
     await removePnpmLockFile();
   }
