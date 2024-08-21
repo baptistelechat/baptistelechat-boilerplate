@@ -33,11 +33,11 @@ Step 1 → After installing the CLI, run this command with the project name :
 
 You can also use npx or yarn dlx or pnpm dlx to run the CLI without installing it globally:
 ```bash
-npx @baptistelechat/boilerplate -n my-new-project
+npx @baptistelechat/boilerplate@latest -n my-new-project
 # or
-yarn dlx @baptistelechat/boilerplate -n my-new-project
+yarn dlx @baptistelechat/boilerplate@latest -n my-new-project
 # or
-pnpm dlx @baptistelechat/boilerplate -n my-new-project
+pnpm dlx @baptistelechat/boilerplate@latest -n my-new-project
 ```
 
 Step 2 → Navigate to the newly created project directory :
