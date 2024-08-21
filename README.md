@@ -1,6 +1,6 @@
 <h1 align="center">Baptiste LECHAT Boilerplate 🚀</h1>
 
-A boilerplate for easily bootstrap a new project using NextJS.
+This project uses the npm @baptistelechat/boilerplate package to easily start a new project using NextJS.
 
 ## ✨ Getting Started
 

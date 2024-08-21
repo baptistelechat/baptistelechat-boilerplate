@@ -1,7 +1,7 @@
 "use client";
-import { MotionButton } from "@/components/ui/button";
+import BasicForm from "@/components/BasicForm";
+import Counter from "@/components/Counter";
 import { Variants, motion } from "framer-motion";
-import { toast } from "sonner";
 
 const BoilerplateTextVariants: Variants = {
   hidden: {
@@ -14,20 +14,6 @@ const BoilerplateTextVariants: Variants = {
   },
 };
 
-const BoilerplateButtonVariants: Variants = {
-  hidden: {
-    x: -50,
-    opacity: 0,
-  },
-  visible: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      delay: 0.2,
-    },
-  },
-};
-
 export default function Home() {
   return (
     <motion.main
@@ -37,23 +23,10 @@ export default function Home() {
       animate="visible"
     >
       <p className="text-2xl font-semibold">🚀 Baptiste LECHAT Boilerplate</p>
-      <MotionButton
-        variant="outline"
-        onClick={() =>
-          toast("Event has been created", {
-            description: "Sunday, December 03, 2023 at 9:00 AM",
-            action: {
-              label: "Undo",
-              onClick: () => console.log("Undo"),
-            },
-          })
-        }
-        variants={BoilerplateButtonVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        Show Toast
-      </MotionButton>
+      <Counter />
+      <div className="w-1/4">
+        <BasicForm />
+      </div>
     </motion.main>
   );
 }

@@ -100,21 +100,16 @@ Display help information for the CLI:
 ```
 ![help](./screenshot/help.png)
 
-## 🏗 Boilerplate built With
+## 🏗 Technical Stack
 
+This coilerplate use :
 - NextJS → https://nextjs.org/
 - TypeScript → https://fr.reactjs.org/
-- PNPM → https://fr.reactjs.org/
 - Shadcn/ui → https://ui.shadcn.com/
+- Zod → https://zod.dev/
+- Zustand → https://github.com/pmndrs/zustand 
+- Auto-form → https://github.com/vantezzen/auto-form/tree/main
 - Framer Motion → https://www.framer.com/motion/
-
-<p align="center">
-<img src="https://cdn.worldvectorlogo.com/logos/next-js.svg" width="150">
-<img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/typescript/typescript.png" width="150">
-<img src="https://avatars.githubusercontent.com/u/21320719?s=200&v=4" width="150">
-<img src="https://avatars.githubusercontent.com/u/139895814?s=200&v=4" width="150">
-<img src="https://seeklogo.com/images/F/framer-motion-logo-DA1E33CAA1-seeklogo.com.png" width="150">
-</p>
 
 ## 😸 Maintainers
 
