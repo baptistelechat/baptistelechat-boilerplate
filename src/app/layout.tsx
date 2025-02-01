@@ -28,9 +28,9 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          // defaultTheme="system"
-          // enableSystem
-          // disableTransitionOnChange
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
         >
           <div className="fixed bottom-4 right-4 z-50">
             <ThemeToggle />
