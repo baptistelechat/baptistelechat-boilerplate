@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { MotionButton } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -8,9 +7,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ActionVariants } from "@/lib/utils/framer-motion/variants";
 import { ChevronRight, Dot, MonitorCog, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import { ActionVariants } from "@/lib/utils/framer-motion/variants";
+import { useEffect, useState } from "react";
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
