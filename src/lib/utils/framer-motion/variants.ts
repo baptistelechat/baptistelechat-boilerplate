@@ -9,7 +9,7 @@ export const ActionVariants: Variants = {
     x: 0,
     opacity: 1,
     transition: {
-      delay: 3,
+      delay: 1,
     },
   },
 };
